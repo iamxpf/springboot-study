@@ -1,0 +1,52 @@
+server:
+  port: 8088
+
+projName: Dongfang
+oauth:
+  password: 123321
+  alias: tycoonclient
+
+spring:
+  jpa:
+    database: oracle
+    show-sql: true
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@10.45.58.36:1521/cc
+    username: ccshse_st5
+    password: smart
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters:
+      commons-log.connection-logger-name: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+  redis:
+    host: 10.45.12.120
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+  data:
+    mongodb:
+      host: 10.45.12.120
+      port: 27017
+      database: test
+    neo4j:
+      username: neo4j
+      password: 123
+      uri: http://10.45.12.120:7474
